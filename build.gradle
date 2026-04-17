@@ -9,7 +9,7 @@ group = 'org.inmopx'
 version = '1.0.0'
 
 base {
-    archivesName = 'DBHMod'
+    archivesName = 'DMZEvoMod'
 }
 
 java {
@@ -27,8 +27,9 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
+            // ← corregido: debe coincidir con tu MOD_ID
             mods {
-                dbh_mod {
+                dmzevo_mod {
                     source sourceSets.main
                 }
             }
@@ -40,7 +41,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                dbh_mod {
+                dmzevo_mod {
                     source sourceSets.main
                 }
             }
@@ -52,10 +53,18 @@ repositories {
     maven {
         url = 'https://maven.minecraftforge.net'
     }
+    // Para leer JARs locales de la carpeta libs/
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+
+    // DragonMinEZ 2.0.4 desde libs/
+    // compileOnly = solo para compilar, no se mete dentro de tu jar
+    compileOnly fg.deobf("libs:dragonminez:2.0.4")
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -65,14 +74,12 @@ tasks.withType(JavaCompile).configureEach {
 jar {
     manifest {
         attributes(
-                'Specification-Title': 'DBHMod',
-                'Specification-Vendor': 'inmopx',
+                'Specification-Title': 'DMZEvoMod',
+                'Specification-Vendor': 'InmortalPx',
                 'Specification-Version': '1',
                 'Implementation-Title': project.name,
                 'Implementation-Version': project.version,
-                'Implementation-Vendor': 'inmopx'
+                'Implementation-Vendor': 'InmortalPx'
         )
     }
 }
-
-

@@ -1,2 +1,2 @@
-# DBHMod
-Mod para DragonBlockHispano, resourcepack y a futuro otras cosas.
+# DMZEvolutionMod
+Mod para DMZEvolution, resourcepack y a futuro otras cosas.

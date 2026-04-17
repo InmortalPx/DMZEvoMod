@@ -3,20 +3,20 @@ loaderVersion="[47,)"
 license="All Rights Reserved"
 
 [[mods]]
-modId="dbh_mod"
+modId="dmzevo_mod"
 version="1.0.0"
-displayName="DBHMod"
-description='''Core mod para DragonBlockHispano, añade pack de texturas y en un futuro otras integraciones'''
-authors="InmortalPx e iLalox"
+displayName="DMZEvolutionMod"
+description='''Core mod para DMZ Evolution, Añade bastantes cosas.'''
+authors="InmortalPx"
 
-[[dependencies.dbh_mod]]
+[[dependencies.dmzevo_mod]]
 modId="forge"
 mandatory=true
 versionRange="[47,)"
 ordering="NONE"
 side="BOTH"
 
-[[dependencies.dbh_mod]]
+[[dependencies.dmzevo_mod]]
 modId="minecraft"
 mandatory=true
 versionRange="[1.20.1]"
