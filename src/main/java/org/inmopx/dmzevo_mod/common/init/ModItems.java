@@ -28,9 +28,11 @@ public class ModItems {
     public static final DeferredRegister<CreativeModeTab> TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, DMZEvoMod.MOD_ID);
 
+    // Tab icon
     public static final RegistryObject<Item> TAB_ICON = ITEMS.register("tab_icon",
             () -> new Item(new Item.Properties()));
 
+    // Armaduras
     public static final Map<ArmorItem.Type, RegistryObject<Item>> DAISHIN_ARMOR =
             registerArmorSet("daishin_armor", "daishin");
     public static final Map<ArmorItem.Type, RegistryObject<Item>> BILLS_ARMOR =
@@ -38,6 +40,7 @@ public class ModItems {
     public static final Map<ArmorItem.Type, RegistryObject<Item>> ZENO_ARMOR =
             registerArmorSet("zeno_armor", "zeno");
 
+    // Tab creativa
     public static final RegistryObject<CreativeModeTab> DMZ_EVO_TAB = TABS.register("tab", () ->
             CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.dmzevo_mod.tab"))
@@ -56,6 +59,7 @@ public class ModItems {
                     .build()
     );
 
+    // Helper
     private static Map<ArmorItem.Type, RegistryObject<Item>> registerArmorSet(
             String itemPrefix, String textureBase) {
         Map<ArmorItem.Type, RegistryObject<Item>> pieces = new HashMap<>();
@@ -73,7 +77,8 @@ public class ModItems {
         TABS.register(bus);
     }
 
-    private static class EvoDbzArmorItem extends DbzArmorItem {
+    // Inner class — hereda todo del DMZ, solo redirige la textura a dmzevo_mod
+    static class EvoDbzArmorItem extends DbzArmorItem {
 
         public EvoDbzArmorItem(Type type, String textureBase) {
             super(ModArmorMaterials.KIKONO, type,
@@ -84,14 +89,10 @@ public class ModItems {
         @Override
         public @Nullable String getArmorTexture(ItemStack stack, Entity entity,
                                                 EquipmentSlot slot, String type) {
-            if ("inner_armor".equals(type) || "outer_armor".equals(type)) {
-                return "dragonminez:textures/armor/blank.png";
-            }
             String base = DMZEvoMod.MOD_ID + ":textures/armor/" + getItemId();
             return slot == EquipmentSlot.LEGS
                     ? base + "_layer2.png"
                     : base + "_layer1.png";
         }
-
     }
 }
